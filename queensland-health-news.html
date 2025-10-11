@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queensland Health News</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #005EB8;
+            --secondary: #009CA6;
+            --accent: #FFB81C;
+            --light: #F5F5F5;
+            --dark: #333333;
+            --text: #444444;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .logo-text span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 94, 184, 0.7);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            max-width: 700px;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .date {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        /* News Articles */
+        .news-article {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .article-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .news-article:hover .article-image img {
+            transform: scale(1.05);
+        }
+        
+        .article-content {
+            padding: 25px;
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .article-tag {
+            background: var(--secondary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .article-content h2 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .article-content p {
+            margin-bottom: 20px;
+        }
+        
+        .read-more {
+            display: inline-block;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .read-more:hover {
+            color: var(--secondary);
+        }
+        
+        .read-more i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: fit-content;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+        
+        .sidebar-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .sidebar-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light);
+            color: var(--primary);
+        }
+        
+        .quick-links ul {
+            list-style: none;
+        }
+        
+        .quick-links ul li {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .quick-links ul li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .quick-links ul li a {
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .quick-links ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .quick-links ul li a i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        .alert-box {
+            background: #FFF9E6;
+            border-left: 4px solid var(--accent);
+            padding: 15px;
+            border-radius: 4px;
+        }
+        
+        .alert-box h4 {
+            color: var(--dark);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .alert-box h4 i {
+            margin-right: 8px;
+            color: var(--accent);
+        }
+        
+        .alert-box p {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .alert-box a {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        /* Services Section */
+        .services {
+            background: var(--light);
+            padding: 60px 0;
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .service-card p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        /* Statistics Section */
+        .statistics {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 60px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: var(--accent);
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        .footer-column p {
+            color: #b0b7c3;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #b0b7c3;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #2d3748;
+            color: #b0b7c3;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero {
+                height: 300px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <!-- Using a placeholder for the logo -->
+                    <div style="width: 60px; height: 60px; background: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                        <span style="color: var(--primary); font-weight: bold; font-size: 1.2rem;">QH</span>
+                    </div>
+                    <div class="logo-text">Queensland <span>Health</span></div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Health Topics</a></li>
+                        <li><a href="#">Hospitals</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Queensland Health News & Updates</h1>
+                <p>Stay informed with the latest health news, alerts, and service updates from across Queensland.</p>
+                <div class="date">Last updated: October 15, 2023</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-content">
+            <!-- News Articles -->
+            <div class="news-column">
+                <div class="news-article">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1584467735871-8db9ac8d55b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="New Hospital Wing">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-tag">Infrastructure</span>
+                            <span>October 12, 2023</span>
+                        </div>
+                        <h2>New $250 Million Hospital Wing Opens in Brisbane</h2>
+                        <p>The Queensland Government has officially opened the new state-of-the-art clinical services building at the Royal Brisbane and Women's Hospital. The facility features 150 new beds, expanded emergency services, and specialized treatment areas.</p>
+                        <p>Health Minister Shannon Fentiman said the new wing would significantly increase capacity and reduce wait times for patients across southeast Queensland.</p>
+                        <a href="#" class="read-more">Read full article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="news-article">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Vaccination Clinic">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-tag">Public Health</span>
+                            <span>October 8, 2023</span>
+                        </div>
+                        <h2>Seasonal Vaccination Campaign Launches Across Queensland</h2>
+                        <p>Queensland Health has launched its annual influenza vaccination campaign, with free vaccines now available for eligible groups including seniors, pregnant women, and people with chronic health conditions.</p>
+                        <p>Chief Health Officer Dr John Gerrard urged Queenslanders to get vaccinated ahead of the peak flu season, noting that vaccination rates have declined since the COVID-19 pandemic.</p>
+                        <a href="#" class="read-more">Read full article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="news-article">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Mental Health Support">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-tag">Mental Health</span>
+                            <span>October 3, 2023</span>
+                        </div>
+                        <h2>New Mental Health Support Service for Regional Queensland</h2>
+                        <p>A new telehealth mental health service has been launched to provide better access to psychological support for people in rural and remote areas of Queensland.</p>
+                        <p>The service will connect patients with specialists via video consultation, reducing the need for long-distance travel and wait times for mental health care.</p>
+                        <a href="#" class="read-more">Read full article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-section quick-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-stethoscope"></i> Find a Health Service</a></li>
+                        <li><a href="#"><i class="fas fa-file-medical"></i> Health Directives</a></li>
+                        <li><a href="#"><i class="fas fa-book-medical"></i> Health Resources</a></li>
+                        <li><a href="#"><i class="fas fa-user-md"></i> Careers at Queensland Health</a></li>
+                        <li><a href="#"><i class="fas fa-phone-alt"></i> Emergency Contacts</a></li>
+                        <li><a href="#"><i class="fas fa-comment-medical"></i> Feedback & Complaints</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Health Alerts</h3>
+                    <div class="alert-box">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Heatwave Warning</h4>
+                        <p>Extreme heat forecast for Western Queensland this weekend. Stay hydrated and check on vulnerable neighbors.</p>
+                        <a href="#">View heat safety tips →</a>
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Upcoming Events</h3>
+                    <div class="event-item">
+                        <h4>Community Health Fair</h4>
+                        <p><i class="far fa-calendar"></i> October 21, 2023</p>
+                        <p><i class="fas fa-map-marker-alt"></i> South Bank Parklands, Brisbane</p>
+                        <a href="#">More information →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Health Services</h2>
+                <p>Queensland Health provides comprehensive healthcare services across the state</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <h3>Hospital Care</h3>
+                    <p>Specialist medical treatment, surgery, and emergency services at hospitals across Queensland.</p>
+                    <a href="#" class="read-more">Learn more</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Community Health</h3>
+                    <p>Local health services including maternal and child health, aged care, and chronic disease management.</p>
+                    <a href="#" class="read-more">Learn more</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Mental Health</h3>
+                    <p>Specialist mental health services, crisis support, and community-based care programs.</p>
+                    <a href="#" class="read-more">Learn more</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <h3>Emergency Services</h3>
+                    <p>24/7 emergency care, ambulance services, and emergency preparedness information.</p>
+                    <a href="#" class="read-more">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="statistics">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>16,000+</h3>
+                    <p>Hospital Beds</p>
+                </div>
+                <div class="stat-item">
+                    <h3>90,000+</h3>
+                    <p>Healthcare Staff</p>
+                </div>
+                <div class="stat-item">
+                    <h3>180+</h3>
+                    <p>Hospitals & Facilities</p>
+                </div>
+                <div class="stat-item">
+                    <h3>5.2M</h3>
+                    <p>People Served</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Queensland Health</h3>
+                    <p>Providing world-class healthcare to all Queenslanders through our hospitals, health services, and community programs.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">News & Media</a></li>
+                        <li><a href="#">Publications</a></li>
+                        <li><a href="#">Tenders</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Health Services</h3>
+                    <ul>
+                        <li><a href="#">Find a Hospital</a></li>
+                        <li><a href="#">Health Conditions</a></li>
+                        <li><a href="#">Healthy Living</a></li>
+                        <li><a href="#">Immunisation</a></li>
+                        <li><a href="#">Mental Health</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> 13 HEALTH (13 43 25 84)</li>
+                        <li><i class="fas fa-envelope"></i> enquiries@health.qld.gov.au</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 147-163 Charlotte Street, Brisbane QLD 4000</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Queensland Government. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
