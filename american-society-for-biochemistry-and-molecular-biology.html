@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>American Society for Biochemistry and Molecular Biology</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #1565c0;
+            --primary-dark: #0d47a1;
+            --secondary: #e53935;
+            --accent: #43a047;
+            --light: #f5f7fa;
+            --dark: #263238;
+            --gray: #546e7a;
+            --light-gray: #e0e0e0;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--primary-dark);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #c62828;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            color: var(--primary);
+            font-size: 32px;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            color: var(--dark);
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: var(--dark);
+            font-weight: 500;
+            position: relative;
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        nav a:hover:after, nav a.active:after {
+            width: 100%;
+        }
+        
+        nav a:hover, nav a.active {
+            color: var(--primary);
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .join-btn {
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .join-btn:hover {
+            background: var(--primary-dark);
+            color: white;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(21, 101, 192, 0.85), rgba(13, 71, 161, 0.85)), url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Mission Section */
+        .mission {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .mission-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .mission-content {
+            flex: 1;
+        }
+        
+        .mission-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .mission-content p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+        
+        .mission-image {
+            flex: 1;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .mission-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Publications Section */
+        .publications {
+            padding: 80px 0;
+            background: var(--light);
+        }
+        
+        .publications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .publication-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .publication-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .publication-img {
+            height: 200px;
+            background-color: var(--light-gray);
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .publication-content {
+            padding: 25px;
+        }
+        
+        .publication-content h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .publication-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        .publication-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .benefit-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(21, 101, 192, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .benefit-icon i {
+            font-size: 30px;
+            color: var(--primary);
+        }
+        
+        .benefit-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .benefit-card p {
+            color: var(--gray);
+        }
+        
+        /* Events Section */
+        .events {
+            padding: 80px 0;
+            background: var(--light);
+        }
+        
+        .events-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .event-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 25px;
+            display: flex;
+            gap: 25px;
+            transition: var(--transition);
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .event-date {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            min-width: 80px;
+        }
+        
+        .event-date .month {
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        
+        .event-date .day {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .event-info {
+            flex: 1;
+        }
+        
+        .event-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .event-info p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+        
+        .event-meta {
+            display: flex;
+            gap: 15px;
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        .event-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Resources Section */
+        .resources {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .resource-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 25px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .resource-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(21, 101, 192, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+        
+        .resource-icon i {
+            font-size: 24px;
+            color: var(--primary);
+        }
+        
+        .resource-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .resource-card p {
+            color: var(--gray);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(rgba(21, 101, 192, 0.9), rgba(13, 71, 161, 0.9)), url('https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 70px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .contact-info i {
+            color: var(--primary);
+            margin-top: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #adb5bd;
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .mission-container {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .event-card {
+                flex-direction: column;
+            }
+            
+            .event-date {
+                align-self: flex-start;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .mission, .publications, .benefits, .events, .resources, .cta {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-dna"></i>
+                <h1>ASBMB</h1>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#benefits">Membership</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="#" class="join-btn">Join ASBMB</a>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>American Society for Biochemistry and Molecular Biology</h1>
+            <p>Advancing scientific discovery through research, education, and advocacy in biochemistry and molecular biology.</p>
+            <div class="hero-buttons">
+                <a href="#benefits" class="btn btn-primary">Become a Member</a>
+                <a href="#about" class="btn btn-outline">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission" id="about">
+        <div class="container mission-container">
+            <div class="mission-content">
+                <h2>Our Mission</h2>
+                <p>The American Society for Biochemistry and Molecular Biology (ASBMB) is an international nonprofit scientific and educational organization. With over 11,000 members, the society advances scientific discovery through its journals, scientific meetings, advocacy and education programs.</p>
+                <p>Founded in 1906, ASBMB is one of the oldest and most respected molecular life science societies. Our members work in academia, industry, and government to further our understanding of the molecular nature of life processes.</p>
+                <p>ASBMB publishes three highly cited peer-reviewed journals, organizes scientific meetings, advocates for funding of research, provides career development resources, and promotes science education at all levels.</p>
+                <a href="#" class="btn btn-primary">Our History</a>
+            </div>
+            <div class="mission-image">
+                <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Biochemistry research">
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section class="publications" id="publications">
+        <div class="container">
+            <h2 class="section-title">Leading Scientific Publications</h2>
+            <p class="section-subtitle">ASBMB publishes high-impact journals that advance the fields of biochemistry and molecular biology.</p>
+            
+            <div class="publications-grid">
+                <div class="publication-card">
+                    <div class="publication-img" style="background-image: url('https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="publication-content">
+                        <h3>Journal of Biological Chemistry</h3>
+                        <p>The world's most-cited biomedical research journal, publishing high-quality science since 1905.</p>
+                        <div class="publication-meta">
+                            <span>Impact Factor: 5.157</span>
+                            <span>Weekly</span>
+                        </div>
+                        <a href="#" class="btn btn-outline">Read Articles</a>
+                    </div>
+                </div>
+                
+                <div class="publication-card">
+                    <div class="publication-img" style="background-image: url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="publication-content">
+                        <h3>Molecular & Cellular Proteomics</h3>
+                        <p>Presents research focusing on the structural and functional properties of proteins and their expression.</p>
+                        <div class="publication-meta">
+                            <span>Impact Factor: 7.381</span>
+                            <span>Monthly</span>
+                        </div>
+                        <a href="#" class="btn btn-outline">Read Articles</a>
+                    </div>
+                </div>
+                
+                <div class="publication-card">
+                    <div class="publication-img" style="background-image: url('https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="publication-content">
+                        <h3>Journal of Lipid Research</h3>
+                        <p>Focuses on the science of lipids in health and disease, including biochemistry and metabolism.</p>
+                        <div class="publication-meta">
+                            <span>Impact Factor: 5.088</span>
+                            <span>Monthly</span>
+                        </div>
+                        <a href="#" class="btn btn-outline">Read Articles</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <h2 class="section-title">Member Benefits</h2>
+            <p class="section-subtitle">Join our community of scientists to access exclusive resources and opportunities.</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <h3>Journal Access</h3>
+                    <p>Free or discounted access to ASBMB's leading scientific publications and archives.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Networking</h3>
+                    <p>Connect with leading scientists through meetings, conferences, and online communities.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Career Development</h3>
+                    <p>Access to grants, awards, fellowships, and professional development resources.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="btn btn-secondary">View All Benefits</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events" id="events">
+        <div class="container">
+            <h2 class="section-title">Upcoming Events</h2>
+            <p class="section-subtitle">Join us for scientific meetings, conferences, and educational programs.</p>
+            
+            <div class="events-container">
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="month">Apr</div>
+                        <div class="day">25-28</div>
+                    </div>
+                    <div class="event-info">
+                        <h3>ASBMB Annual Meeting</h3>
+                        <p>The premier scientific meeting for biochemists and molecular biologists, featuring cutting-edge research, networking opportunities, and career development sessions.</p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Philadelphia, PA</span>
+                            <span><i class="fas fa-users"></i> 8,000+ Attendees</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="month">Jun</div>
+                        <div class="day">15</div>
+                    </div>
+                    <div class="event-info">
+                        <h3>Proteomics & Metabolomics Symposium</h3>
+                        <p>Focus on the latest advances in proteomics, metabolomics, and systems biology approaches to understanding cellular processes.</p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-laptop"></i> Virtual Event</span>
+                            <span><i class="fas fa-clock"></i> 1:00 PM EST</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="month">Sep</div>
+                        <div class="day">10-12</div>
+                    </div>
+                    <div class="event-info">
+                        <h3>Lipid Signaling & Metabolism Conference</h3>
+                        <p>Exploring the role of lipids in cell signaling, membrane dynamics, and metabolic regulation in health and disease.</p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> San Diego, CA</span>
+                            <span><i class="fas fa-user-graduate"></i> Researchers & Students</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="btn btn-primary">View All Events</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources" id="resources">
+        <div class="container">
+            <h2 class="section-title">Scientific Resources</h2>
+            <p class="section-subtitle">Access tools, databases, and educational materials to support your research and career.</p>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Research Databases</h3>
+                    <p>Access to specialized databases and bioinformatics tools for molecular biology research.</p>
+                    <a href="#" class="btn btn-outline">Explore</a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <h3>Science Policy</h3>
+                    <p>Stay informed about policy issues affecting research funding and scientific integrity.</p>
+                    <a href="#" class="btn btn-outline">Learn More</a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Education Resources</h3>
+                    <p>Teaching materials, curriculum guidelines, and outreach programs for science education.</p>
+                    <a href="#" class="btn btn-outline">Explore</a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Career Center</h3>
+                    <p>Job opportunities, career advice, and professional development resources for scientists.</p>
+                    <a href="#" class="btn btn-outline">Explore</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Join the ASBMB Community</h2>
+            <p>Become part of the leading organization for biochemistry and molecular biology professionals. Access exclusive resources, networking opportunities, and professional development.</p>
+            <a href="#" class="btn btn-secondary">Become a Member</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ASBMB</h3>
+                    <p>Advancing scientific discovery through research, education, and advocacy in biochemistry and molecular biology.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#publications">Publications</a></li>
+                        <li><a href="#benefits">Membership</a></li>
+                        <li><a href="#events">Events</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Journals</a></li>
+                        <li><a href="#">Grants & Funding</a></li>
+                        <li><a href="#">Career Center</a></li>
+                        <li><a href="#">Education</a></li>
+                        <li><a href="#">Advocacy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>11200 Rockville Pike, Suite 302, Rockville, MD 20852</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>(240) 283-6600</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>asbmb@asbmb.org</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Fri: 9am-5pm EST</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 American Society for Biochemistry and Molecular Biology. All rights reserved. | Designed for educational purposes</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const nav = document.querySelector('nav');
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    document.querySelector('nav').style.display = 'none';
+                }
+            });
+        });
+        
+        // Update nav active state on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
